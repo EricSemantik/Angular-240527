@@ -25,4 +25,42 @@
     {{todo.id}} - {{todo.title}} - {{todo.completed}}
   </p>
 
+  <hr/>
+
+  
+<form>
+  <table>
+    <tr>
+        <td colspan="4">Recherche : <input type="text" [(ngModel)]="recherche" name="recherche"/></td>
+    </tr>  
+    <tr>
+      <th>Identifiant</th>
+      <th>Titre</th>
+      <th>Complété ?</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let t of search()">
+      <td>{{t.id}}</td>
+      <td>{{t.title}}</td>
+      <td *ngIf="t.completed; else elseCompleted">Terminé</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      
+      <td><input type="number" [(ngModel)]="todoForm.id" name="id"></td>
+      <td><input type="text" [(ngModel)]="todoForm.title" name="title"></td>
+      <td><input type="checkbox" [(ngModel)]="todoForm.completed" name="completed"></td>
+      <td><button (click)="ajouterTodo()">Valider</button></td>
+    
+    </tr>
+    
+
+  </table>
+</form>
+
+  <ng-template #elseCompleted>
+    <td>Non terminé</td>
+  </ng-template>
+
 </div>
