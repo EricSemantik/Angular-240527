@@ -1,4 +1,7 @@
 <div>
+  <h1>{{dtJour | date:'dd MMMM yyyy'}}</h1>
+
+
   <input type="text" [(ngModel)]="prenom" (ngModelChange)="changePrenom($event)"/><button (click)="resetPrenom()">VIDER</button>
   <p [style.color]="couleur" bg-black>{{prenom}}</p>
 
@@ -42,7 +45,8 @@
     <tr *ngFor="let t of search()">
       <td>{{t.id}}</td>
       <td>{{t.title}}</td>
-      <td *ngIf="t.completed; else elseCompleted">Terminé</td>
+      <td >{{t.completed | todoState | uppercase}}</td>
+      <!-- <td *ngIf="t.completed; else elseCompleted">Terminé</td> -->
       <td></td>
     </tr>
     
@@ -59,8 +63,8 @@
   </table>
 </form>
 
-  <ng-template #elseCompleted>
+  <!-- <ng-template #elseCompleted>
     <td>Non terminé</td>
-  </ng-template>
+  </ng-template> -->
 
 </div>

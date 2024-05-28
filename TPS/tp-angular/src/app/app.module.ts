@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { BackGroundBlackDirective } from './back-ground-black.directive';
+import { TodoStatePipe } from './todo-state.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BackGroundBlackDirective
+    BackGroundBlackDirective,
+    TodoStatePipe
   ],
   imports: [
     BrowserModule,

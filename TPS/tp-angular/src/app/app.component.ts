@@ -10,6 +10,8 @@ export class AppComponent {
   prenom: string = 'Eric';
   couleur: string = "#0000FF";
 
+  dtJour: Date = new Date();
+
   recherche: string = "";
 
   todo: Todo = new Todo();
