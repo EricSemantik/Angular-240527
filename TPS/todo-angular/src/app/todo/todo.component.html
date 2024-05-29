@@ -1,0 +1,34 @@
+<div class="card mt-3">
+    <div class="card-header text-white bg-primary">
+        Liste des Todos
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Description</th>
+                    <th>Important</th>
+                    <th>Done</th>
+                    <th>Liste (id)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of todos">
+                    <td>{{todo.id}}</td>
+                    <td>{{todo.description}}</td>
+                    <td>{{todo.isImportant}}</td>
+                    <td>{{todo.isDone}}</td>
+                    <td>{{todo.listId}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
+    </div>
+
+</div>
