@@ -15,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let todo of todos">
+                <tr *ngFor="let todo of list()">
                     <td>{{todo.id}}</td>
                     <td>{{todo.description}}</td>
                     <td>{{todo.isImportant}}</td>
@@ -30,5 +30,5 @@
     <div class="card-footer">
         <a class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
     </div>
-
 </div>
+

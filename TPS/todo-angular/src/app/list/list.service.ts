@@ -8,7 +8,7 @@ export class ListService {
   private lists: List[] = new Array<List>();
   
   constructor() {
-    this.lists.push(new List(4, "Tâcches ménagères", 3));
+    this.lists.push(new List(4, "Tâches ménagères", 3));
     this.lists.push(new List(5, "Liste de Noël", 3));
     this.lists.push(new List(8, "Liste de Mariage", 8));
   }
@@ -22,10 +22,21 @@ export class ListService {
   }
 
   save(list: List): void {
-    if(list.id) { // UPDATE
+    if(list.id) {
+      let position = this.lists.findIndex(l => l.id == list.id);
 
-    } else { // CREATE
+      this.lists[position] = list;
+    } else { 
+      let max = 0;
+    
+      this.lists.forEach(l => {
+        if(l.id && l.id > max) 
+          max = l.id;
+      });
 
+      list.id = ++max;
+
+      this.lists.push(list);
     }
   }
 

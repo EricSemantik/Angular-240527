@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
 import { TodoComponent } from './todo/todo.component';
 import { UserComponent } from './user/user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserComponent } from './user/user.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

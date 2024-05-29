@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Todo } from '../model';
+import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -7,12 +8,11 @@ import { Todo } from '../model';
   styleUrl: './todo.component.css'
 })
 export class TodoComponent {
-  todos: Todo[] = new Array<Todo>();
 
-  constructor() {
-    this.todos.push(new Todo(5, "Ménage", true, false, 4));
-    this.todos.push(new Todo(55, "Vaisselle", false, true, 4));
-    this.todos.push(new Todo(15, "Repassage", true, false, 4));
-    this.todos.push(new Todo(45, "Course de Noël", false, false, 5));
+  constructor(private todoService: TodoService) {
+  }
+
+  list(): Todo[] {
+    return this.todoService.findAll();
   }
 }
