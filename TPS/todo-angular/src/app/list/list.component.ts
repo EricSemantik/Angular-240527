@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { List, User } from '../model';
 import { ListService } from './list.service';
 import { UserService } from '../user/user.service';
+import { ListHttpService } from './list-http.service';
 
 @Component({
   selector: 'app-list',
@@ -11,7 +12,7 @@ import { UserService } from '../user/user.service';
 export class ListComponent {
   listForm: List | undefined;
 
-  constructor(private listService: ListService, private userService: UserService) {
+  constructor(private listService: ListHttpService, private userService: UserService) {
   }
 
   list(): List[] {
@@ -24,7 +25,7 @@ export class ListComponent {
 
   edit(id?: number) {
     if(id) 
-      this.listForm = {...this.listService.findById(id)};
+      this.listService.findById(id).subscribe(resp => this.listForm = resp);
   }
 
   save() {
