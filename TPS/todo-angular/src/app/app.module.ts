@@ -7,8 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
 import { TodoComponent } from './todo/todo.component';
 import { UserComponent } from './user/user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,15 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ListComponent,
     TodoComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

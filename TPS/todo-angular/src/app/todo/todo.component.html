@@ -21,14 +21,17 @@
                     <td>{{todo.isImportant}}</td>
                     <td>{{todo.isDone}}</td>
                     <td>{{todo.listId}}</td>
-                    <td></td>
+                    <td><div class="btn-group btn-group-sm">
+                        <a (click)="edit(todo.id)" class="btn btn-primary"><i class="bi bi-pen"></i></a>
+                        <a (click)="remove(todo.id)" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                    </div></td>
                 </tr>
             </tbody>
 
         </table>
     </div>
     <div class="card-footer">
-        <a class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
+        <a class="btn btn-success btn-lg" (click)="add()"><i class="bi bi-plus-lg"></i></a>
     </div>
 </div>
 <div class="card mt-3" *ngIf="todoForm">

@@ -2,32 +2,32 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { List, Todo } from '../model';
 import { TodoService } from './todo.service';
 import { TodoHttpService } from './todo-http.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { ListHttpService } from '../list/list-http.service';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css'
 })
-export class TodoComponent implements OnInit, OnDestroy {
+export class TodoComponent implements OnInit {
   todoForm: Todo | undefined;
 
   todos!: Todo[];
   todosSubscription!: Subscription;
 
-  constructor(private todoService: TodoHttpService) {
+  constructor(private todoService: TodoHttpService, private listService: ListHttpService) {
   }
 
   ngOnInit(): void {
+   this.load();
+  }
+  
+  load()  {
     this.todosSubscription = this.todoService.findAll().subscribe((resp) => {
       this.todos = resp;
     });
   }
-  
-  ngOnDestroy(): void {
-    this.todosSubscription.unsubscribe();
-  }
-    
 
   list(): Todo[] {
     return this.todos;
@@ -38,15 +38,24 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   edit(id?: number) {
-    // A faire
+    if(id)
+      this.todoService.findById(id).subscribe(resp => this.todoForm = resp);
   }
 
   save() {
-    // A faire
+    if(this.todoForm)
+      this.todoService.save(this.todoForm).subscribe(() => {
+        this.load();
+    });
+
+    this.cancel();
   }
 
   remove(id?: number) {
-    // A faire
+    if(id)
+      this.todoService.deleteById(id).subscribe(() => {
+        this.load();
+      });
   }
 
   cancel() {
@@ -54,13 +63,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   listLists(): List[] {
-    // A faire
-    return new Array<List>();
+    return this.listService.findAll();
   }
 
-  findListById(id?: number): List | undefined {
-    
-
-    return undefined;
-  }
 }
